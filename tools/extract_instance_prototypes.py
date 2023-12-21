@@ -29,6 +29,10 @@ pixel_std = torch.Tensor([58.395, 57.120, 57.375]).view(3, 1, 1)
 normalize_image = lambda x: (x - pixel_mean) / pixel_std
 denormalize_image = lambda x: (x * pixel_std) + pixel_mean
 
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+
 
 def compress(tensor, n_clst=5):
     if len(tensor) <= n_clst:
